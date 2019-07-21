@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
           age: ['1', Validators.required],
           dob: ['', Validators.required],
           occupation: ['', Validators.required],
-          dsi: ['', Validators.required]          
+          dsi: ['', [Validators.required, Validators.min(50),Validators.max(500),Validators.pattern("^[1-9][0-9]{0,2}$")]]         
         });
 
         this.occupations = this.getOccupations();

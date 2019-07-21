@@ -49,11 +49,15 @@
           </div>
           <div class="form-group">
             <label>Death - Sum Insured in $</label>
-            <input type="number" formControlName="dsi" class="form-control" 
+            <input type="number" formControlName="dsi" class="form-control"
                                 
               [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }"/>
             <div *ngIf="submitted && f.dsi.errors" class="invalid-feedback">
               <div *ngIf="f.dsi.errors.required">Death sum insured is required</div>
+              <div *ngIf="f.dsi.errors.min">Death sum insured should be greater than or equal to 50$</div>
+              <div *ngIf="f.dsi.errors.max">Death sum insured should be less than of equal to 500$</div>
+              <div *ngIf="f.dsi.errors.pattern">Provide a valid whole value between 50 and 500</div>
+
             </div>
           </div>
             <div class="form-group">
