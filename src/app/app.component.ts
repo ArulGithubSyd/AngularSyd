@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     premium: number;
     occRating: number;
     occFactor: number;
+    deathPremium: number;
     
     constructor(private formBuilder: FormBuilder) { }
 
@@ -61,6 +62,24 @@ export class AppComponent implements OnInit {
 
     }
 
+        //get rating based on occupation
+        getFactorByOccupationId(id: number)
+        {
+          var occupationRec =  this.occupations.find(r=> r.id == id); 
+          console.log(occupationRec.rating);
+         // this.occRating = occupationRec.rating;
+          this.occFactor = this.getFactorByRatingId(occupationRec.rating);
+          
+        }
+      
+        // get factor based on rating
+        getFactorByRatingId(id: number)
+        {
+          var factorRec =  this.factors.find(f=> f.ratingid == id); 
+          console.log(factorRec.factor);
+          //this.occRating = occupation.rating;
+          return factorRec.factor;
+        }
     // get the form fields
     get f() { return this.calcPremiumForm.controls; }
 
@@ -72,13 +91,21 @@ export class AppComponent implements OnInit {
             return;
         }   
           
+        this.getFactorByOccupationId(this.calcPremiumForm.get('occupation').value);
+
+
         this.CalculateDeathPremium();
     }
 
      CalculateDeathPremium()
     {
 
-     alert('calcPremiumForm');
+      var factor = this.getFactorByOccupationId(this.calcPremiumForm.get('occupation').value);
+      var dsi = this.calcPremiumForm.get('dsi').value;
+      var age = this.calcPremiumForm.get('age').value;
+
+      this.deathPremium = ((dsi * this.occFactor * age)/1000) * 12;    
+      console.log(this.deathPremium);
     }
 }
 
