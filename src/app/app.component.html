@@ -37,39 +37,7 @@
               <div *ngIf="f.dsi.errors.required">Death sum insured is required</div>
             </div>
           </div>
-          <!--<div class="form-group">
-                      <label>Occupation</label>
-                      <input type="combo" formControlName="occupation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.occupation.errors }" />
-                      <div *ngIf="submitted && f.occupation.errors" class="invalid-feedback">
-                          <div *ngIf="f.occupation.errors.required">Occupation is required</div>            
-                        </div>
-                      </div>
-          <div class="form-group">
-            <label>Occupation</label>
-            <select id="occupation" required formControlName="occupation" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.occupation.errors }">
-          </div>
-            <option *ngFor="let occupation of occupations" [value]="occupation.id">
-                          {{occupation.name}}
-                        </option>  
-                        <option *ngFor="let occupation of occupations" value={{occupation}}>
-                            {{occupation}}
-                        </option>
-                        <div class="form-group">
-                            <label>Occupation</label>
-                        <select formControlName="f.occupations" id="occupations">
-                            <option *ngFor="let occupation of f.occupations; let i = index" [value]="f.occupations[i].id">
-                              {{f.occupations[i].name}}
-                            </option>
-                          </select>
-                        </div>-->
-          <!-- <option value="1"> Cleaner</option>
-                        <option value="2"> Doctor</option>
-                        <option value="3"> Author</option>
-                        <option value="4"> Farmer</option>
-                        <option value="5"> Mechanic</option>
-                        <option value="6"> Florist</option>-->
-          <div class="form-group">
+            <div class="form-group">
             <label for="occupations">Occupation</label>
             <select formControlName="occupation" id="occupations" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }" (ng-change)="onSubmit()">

@@ -66,10 +66,8 @@ export class AppComponent implements OnInit {
         getFactorByOccupationId(id: number)
         {
           var occupationRec =  this.occupations.find(r=> r.id == id); 
-          console.log(occupationRec.rating);
-         // this.occRating = occupationRec.rating;
-          this.occFactor = this.getFactorByRatingId(occupationRec.rating);
-          
+          console.log(occupationRec.rating);       
+          this.occFactor = this.getFactorByRatingId(occupationRec.rating);          
         }
       
         // get factor based on rating
@@ -77,7 +75,6 @@ export class AppComponent implements OnInit {
         {
           var factorRec =  this.factors.find(f=> f.ratingId == id); 
           console.log(factorRec.factor);
-          //this.occRating = occupation.rating;
           return factorRec.factor;
         }
     // get the form fields
