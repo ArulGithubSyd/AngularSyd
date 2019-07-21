@@ -48,8 +48,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label>Death - Sum Insured</label>
-            <input type="number" formControlName="dsi" class="form-control"
+            <label>Death - Sum Insured in $</label>
+            <input type="number" formControlName="dsi" class="form-control" 
+                                
               [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }"/>
             <div *ngIf="submitted && f.dsi.errors" class="invalid-feedback">
               <div *ngIf="f.dsi.errors.required">Death sum insured is required</div>
@@ -74,7 +75,7 @@
           </div>
 
           <div [style.visibility]="ageIsValid ? 'visible' : 'hidden'">
-              <label id="result">The Death Premium is: <h2 style="color: blue">{{ deathPremium | number : '1.2-2'}}</h2> </label>
+              <label id="result">The Death Premium is: <h2 style="color: blue">{{ deathPremium | number : '1.2-2'}} $</h2> </label>
                                              
           </div>
         </form>
