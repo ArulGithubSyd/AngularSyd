@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     premium: number;
     occRating: number;
     occFactor: number;
-    deathPremium: number;
+    deathPremium: any;
     
     constructor(private formBuilder: FormBuilder) { }
 
@@ -106,6 +106,7 @@ export class AppComponent implements OnInit {
       var dsi = this.calcPremiumForm.get('dsi').value;
       var age = this.calcPremiumForm.get('age').value;
       this.deathPremium = ((dsi * this.occFactor * age)/1000) * 12;    
+      this.deathPremium = this.deathPremium.toPrecision(3);
       console.log(this.deathPremium);
     }
 }
