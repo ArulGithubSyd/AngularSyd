@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { datepickerAnimation } from 'ngx-bootstrap/datepicker/datepicker-animations';
 
 
 @Component({
@@ -17,10 +18,10 @@ export class AppComponent implements OnInit {
     premium: number;
     occRating: number;
     occFactor: number;
-    deathPremium: any;
-    todayDate: any;
+    deathPremium: any;  
     minDate: Date;
     maxDate: Date;
+    ageIsValid: boolean;
     constructor(private formBuilder: FormBuilder) { }
 
     // Form fields
@@ -39,7 +40,8 @@ export class AppComponent implements OnInit {
         this.maxDate = new Date();
         //this.minDate.setDate(this.minDate.getDate() - 36500);
         this.minDate.setFullYear(this.minDate.getFullYear() - 100);
-        this.maxDate.setDate(this.maxDate.getDate());        
+        this.maxDate.setDate(this.maxDate.getDate());   
+        this.ageIsValid = false;     
     } 
 
     // list of occupations with rating
@@ -86,15 +88,41 @@ export class AppComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;       
-
+        console.log(this.f);
         // Check the validity of the form
+        this.ValidateDOB();
         if (this.calcPremiumForm.invalid) {
             return;
         }       
-        
+        console.log(this.f);
         this.CalculateDeathPremium();
     }
 
+    ValidateDOB()
+    {
+      var dob = new Date(this.calcPremiumForm.get('dob').value);  
+      var now = new Date();   
+      var nowMonth = now.getUTCMonth() + 1; 
+      var nowDay   = now.getUTCDate();
+      var nowYear  = now.getUTCFullYear();      
+      
+      var dobMonth=dob.getUTCMonth();
+      var dobDay = dob.getUTCDate();
+      var dobYear = dob.getUTCFullYear();
+      
+      var birthAge = nowYear - dobYear - 1;
+      
+      if( nowMonth>=dobMonth) 
+          if(nowDay >= dobDay)
+           birthAge += 1 ;
+      
+      var age = this.calcPremiumForm.get('age').value;
+      if(age != birthAge )
+       this.ageIsValid = false;
+      else
+      this.ageIsValid = true;
+    }
+    
      CalculateDeathPremium()
     {
 
