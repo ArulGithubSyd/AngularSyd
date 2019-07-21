@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
         // get factor based on rating
         getFactorByRatingId(id: number)
         {
-          var factorRec =  this.factors.find(f=> f.ratingid == id); 
+          var factorRec =  this.factors.find(f=> f.ratingId == id); 
           console.log(factorRec.factor);
           //this.occRating = occupation.rating;
           return factorRec.factor;
@@ -103,7 +103,6 @@ export class AppComponent implements OnInit {
       var factor = this.getFactorByOccupationId(this.calcPremiumForm.get('occupation').value);
       var dsi = this.calcPremiumForm.get('dsi').value;
       var age = this.calcPremiumForm.get('age').value;
-
       this.deathPremium = ((dsi * this.occFactor * age)/1000) * 12;    
       console.log(this.deathPremium);
     }
