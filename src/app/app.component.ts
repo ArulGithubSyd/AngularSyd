@@ -85,24 +85,16 @@ export class AppComponent implements OnInit {
     get f() { return this.calcPremiumForm.controls; }
 
     onSubmit() {
-        this.submitted = true;
-        
+        this.submitted = true;       
 
         // Check the validity of the form
         if (this.calcPremiumForm.invalid) {
             return;
-        }   
-          
-        this.getFactorByOccupationId(this.calcPremiumForm.get('occupation').value);
-
-
+        }       
+        
         this.CalculateDeathPremium();
     }
 
-    validateDOB()
-    {
-      
-    }
      CalculateDeathPremium()
     {
 

@@ -50,7 +50,7 @@
           <div class="form-group">
             <label>Death - Sum Insured</label>
             <input type="number" formControlName="dsi" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }" />
+              [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }"/>
             <div *ngIf="submitted && f.dsi.errors" class="invalid-feedback">
               <div *ngIf="f.dsi.errors.required">Death sum insured is required</div>
             </div>
@@ -58,7 +58,7 @@
             <div class="form-group">
             <label for="occupations">Occupation</label>
             <select formControlName="occupation" id="occupations" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }" (change)="CalculateDeathPremium()">
+            [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }" (change)="onSubmit()">
            
             
               <option *ngFor="let occupation of occupations; let i = index" [value]="occupations[i].id">
@@ -75,8 +75,8 @@
           </div>
 
           <div>
-              <label >The Death Premium is: <h2 style="color: blue">{{ deathPremium | number : '1.2-2'}}</h2> </label>
-                                 
+              <label>The Death Premium is: <h2 style="color: blue">{{ deathPremium | number : '1.2-2'}}</h2> </label>
+                                             
           </div>
         </form>
       </div>
