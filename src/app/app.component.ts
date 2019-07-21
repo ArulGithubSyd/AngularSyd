@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
           age: ['1', Validators.required],
           dob: ['', Validators.required],
           occupation: ['', Validators.required],
-          dsi: ['', Validators.required]
+          dsi: ['', Validators.required]          
         });
 
         this.occupations = this.getOccupations();
@@ -93,6 +93,7 @@ export class AppComponent implements OnInit {
         this.submitted = true;       
         console.log(this.f);
         // Check the validity of the form
+        
         if (this.calcPremiumForm.invalid) {
             return;
         }          

@@ -73,8 +73,8 @@
             <button class="btn btn-primary" [disabled]="!calcPremiumForm.valid">Calculate</button>
           </div>
 
-          <div  style="visibility: visible">
-              <label>The Death Premium is: <h2 style="color: blue">{{ deathPremium | number : '1.2-2'}}</h2> </label>
+          <div [style.visibility]="ageIsValid ? 'visible' : 'hidden'">
+              <label id="result">The Death Premium is: <h2 style="color: blue">{{ deathPremium | number : '1.2-2'}}</h2> </label>
                                              
           </div>
         </form>
