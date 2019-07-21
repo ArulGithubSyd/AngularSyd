@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
     occFactor: number;
     deathPremium: any;
     todayDate: any;
+    minDate: Date;
+    maxDate: Date;
     constructor(private formBuilder: FormBuilder) { }
 
     // Form fields
@@ -33,8 +35,12 @@ export class AppComponent implements OnInit {
 
         this.occupations = this.getOccupations();
         this.factors = this.getFactors();
-
-    }
+        this.minDate = new Date();
+        this.maxDate = new Date();
+        //this.minDate.setDate(this.minDate.getDate() - 36500);
+        this.minDate.setFullYear(this.minDate.getFullYear() - 100);
+        this.maxDate.setDate(this.maxDate.getDate());        
+    } 
 
     // list of occupations with rating
     getOccupations() {
