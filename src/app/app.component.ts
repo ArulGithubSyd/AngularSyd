@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@ang
 import { datepickerAnimation } from 'ngx-bootstrap/datepicker/datepicker-animations';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,6 +23,8 @@ export class AppComponent implements OnInit {
     minDate: Date;
     maxDate: Date;
     ageIsValid: boolean;
+    birthAge: number;
+    
     constructor(private formBuilder: FormBuilder) { }
 
     // Form fields
@@ -41,7 +44,7 @@ export class AppComponent implements OnInit {
         //this.minDate.setDate(this.minDate.getDate() - 36500);
         this.minDate.setFullYear(this.minDate.getFullYear() - 100);
         this.maxDate.setDate(this.maxDate.getDate());   
-        this.ageIsValid = false;     
+        this.ageIsValid = false;           
     } 
 
     // list of occupations with rating
@@ -90,10 +93,17 @@ export class AppComponent implements OnInit {
         this.submitted = true;       
         console.log(this.f);
         // Check the validity of the form
-        this.ValidateDOB();
         if (this.calcPremiumForm.invalid) {
             return;
-        }       
+        }          
+        
+        this.ValidateDOB();
+        if(!this.ageIsValid)
+        {
+          alert("Given age:" + this.calcPremiumForm.get('age').value + " and age as of Date of birth:"+ this.birthAge + " do not match. Please correct");
+          return
+        }
+
         console.log(this.f);
         this.CalculateDeathPremium();
     }
@@ -110,19 +120,20 @@ export class AppComponent implements OnInit {
       var dobDay = dob.getUTCDate();
       var dobYear = dob.getUTCFullYear();
       
-      var birthAge = nowYear - dobYear - 1;
+      this.birthAge = nowYear - dobYear - 1;
       
       if( nowMonth>=dobMonth) 
           if(nowDay >= dobDay)
-           birthAge += 1 ;
+          this.birthAge += 1 ;
       
       var age = this.calcPremiumForm.get('age').value;
-      if(age != birthAge )
-       this.ageIsValid = false;
+      if(age != this.birthAge ){
+       this.ageIsValid = false;        
+      }
       else
       this.ageIsValid = true;
     }
-    
+
      CalculateDeathPremium()
     {
 
@@ -130,7 +141,7 @@ export class AppComponent implements OnInit {
       var dsi = this.calcPremiumForm.get('dsi').value;
       var age = this.calcPremiumForm.get('age').value;
       this.deathPremium = ((dsi * this.occFactor * age)/1000) * 12;    
-      this.deathPremium = this.deathPremium.toPrecision(3);
+      //this.deathPremium = this.deathPremium.toPrecision(3);
       console.log(this.deathPremium);
     }
 }

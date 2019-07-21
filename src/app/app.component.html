@@ -58,7 +58,7 @@
             <div class="form-group">
             <label for="occupations">Occupation</label>
             <select formControlName="occupation" id="occupations" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }" (change)="onSubmit()">           
+            [ngClass]="{ 'is-invalid': submitted && f.occupation.errors }" (change)="onSubmit()">           
             
               <option *ngFor="let occupation of occupations; let i = index" [value]="occupations[i].id">
                 {{occupations[i].name}}
