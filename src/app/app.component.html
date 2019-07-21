@@ -1,0 +1,94 @@
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Death Premium Calulater</h3>
+        <form [formGroup]="calcPremiumForm" (ngSubmit)="onSubmit()" >
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="name" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" formControlName="age" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.age.errors }" />
+            <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+              <div *ngIf="f.age.errors.required">Age is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" formControlName="dob" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+            <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+              <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Death - Sum Insured</label>
+            <input type="number" formControlName="dsi" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }" />
+            <div *ngIf="submitted && f.dsi.errors" class="invalid-feedback">
+              <div *ngIf="f.dsi.errors.required">Death sum insured is required</div>
+            </div>
+          </div>
+          <!--<div class="form-group">
+                      <label>Occupation</label>
+                      <input type="combo" formControlName="occupation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.occupation.errors }" />
+                      <div *ngIf="submitted && f.occupation.errors" class="invalid-feedback">
+                          <div *ngIf="f.occupation.errors.required">Occupation is required</div>            
+                        </div>
+                      </div>
+          <div class="form-group">
+            <label>Occupation</label>
+            <select id="occupation" required formControlName="occupation" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.occupation.errors }">
+          </div>
+            <option *ngFor="let occupation of occupations" [value]="occupation.id">
+                          {{occupation.name}}
+                        </option>  
+                        <option *ngFor="let occupation of occupations" value={{occupation}}>
+                            {{occupation}}
+                        </option>
+                        <div class="form-group">
+                            <label>Occupation</label>
+                        <select formControlName="f.occupations" id="occupations">
+                            <option *ngFor="let occupation of f.occupations; let i = index" [value]="f.occupations[i].id">
+                              {{f.occupations[i].name}}
+                            </option>
+                          </select>
+                        </div>-->
+          <!-- <option value="1"> Cleaner</option>
+                        <option value="2"> Doctor</option>
+                        <option value="3"> Author</option>
+                        <option value="4"> Farmer</option>
+                        <option value="5"> Mechanic</option>
+                        <option value="6"> Florist</option>-->
+          <div class="form-group">
+            <label for="occupations">Occupation</label>
+            <select formControlName="occupation" id="occupations" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }" (ng-change)="onSubmit()">
+           
+            
+              <option *ngFor="let occupation of occupations; let i = index" [value]="occupations[i].id">
+                {{occupations[i].name}}
+              </option>
+            </select>
+            <div *ngIf="submitted && f.occupation.errors" class="invalid-feedback">
+                <div *ngIf="f.occupation.errors.required">Occupation is required</div>
+              </div>
+          </div>  
+
+          <div class="form-group">
+            <button class="btn btn-primary">Calculate</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
