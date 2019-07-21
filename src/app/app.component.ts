@@ -83,6 +83,7 @@ export class AppComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         
+
         // Check the validity of the form
         if (this.calcPremiumForm.invalid) {
             return;
@@ -94,6 +95,10 @@ export class AppComponent implements OnInit {
         this.CalculateDeathPremium();
     }
 
+    validateDOB()
+    {
+      
+    }
      CalculateDeathPremium()
     {
 

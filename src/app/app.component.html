@@ -40,7 +40,7 @@
             <div class="form-group">
             <label for="occupations">Occupation</label>
             <select formControlName="occupation" id="occupations" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }" (ng-change)="onSubmit()">
+            [ngClass]="{ 'is-invalid': submitted && f.dsi.errors }" (change)="CalculateDeathPremium()">
            
             
               <option *ngFor="let occupation of occupations; let i = index" [value]="occupations[i].id">
@@ -54,6 +54,11 @@
 
           <div class="form-group">
             <button class="btn btn-primary">Calculate</button>
+          </div>
+
+          <div class="form-group">
+              <label >The Death Premium is: {{deathPremium}} </label>
+                        
           </div>
         </form>
       </div>
