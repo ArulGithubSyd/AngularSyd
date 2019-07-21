@@ -1,8 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
-import { Customer } from '../models/customer.model'; 
-import { Occupation } from '../models/occupation.model';
 
 
 @Component({
@@ -20,14 +18,14 @@ export class AppComponent implements OnInit {
     occRating: number;
     occFactor: number;
     deathPremium: any;
-    
+    todayDate: any;
     constructor(private formBuilder: FormBuilder) { }
 
     // Form fields
     ngOnInit() {
         this.calcPremiumForm = this.formBuilder.group({
           name: ['', Validators.required],
-          age: ['', Validators.required],
+          age: ['1', Validators.required],
           dob: ['', Validators.required],
           occupation: ['', Validators.required],
           dsi: ['', Validators.required]
@@ -35,7 +33,7 @@ export class AppComponent implements OnInit {
 
         this.occupations = this.getOccupations();
         this.factors = this.getFactors();
-       
+
     }
 
     // list of occupations with rating
