@@ -37,13 +37,14 @@ namespace PremiumCalculator.Controllers
             }
 
             var occupation = await _context.Occupations.FindAsync(OccId);
-            var factorForRating = await _context.RatingFactors.FindAsync(occupation.RatingId);
-            if (factorForRating == null)
+            
+            var factorForRating=_context.RatingFactors.FirstOrDefault(f => f.RatingId == occupation.RatingId).Factor;
+            if (factorForRating == 0)
             {
                 return NotFound();
             }
 
-            return Ok(factorForRating.Factor);
+            return Ok(factorForRating);
         }
 
 
