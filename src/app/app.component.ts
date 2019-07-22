@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
     ageIsValid: boolean;
     birthAge: number;
     api: GetFactor;
-    occtest: number;
     constructor(private formBuilder: FormBuilder) { }
 
     // Form fields

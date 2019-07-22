@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h3>Death Premium Calulater</h3>
+        <h3>Death Premium Calculator</h3>
         <form [formGroup]="calcPremiumForm" (ngSubmit)="onSubmit()" >
           <div class="form-group">
             <label>Name</label>
@@ -75,7 +75,7 @@
           </div>  
 
           <div class="form-group" >
-            <button class="btn btn-primary" [disabled]="!calcPremiumForm.valid">Calculate</button>
+            <button class="btn btn-primary" >Calculate</button>
           </div>
 
           <div [style.visibility]="ageIsValid ? 'visible' : 'hidden'">
