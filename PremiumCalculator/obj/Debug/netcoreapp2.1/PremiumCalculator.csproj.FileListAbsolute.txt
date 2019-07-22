@@ -1,0 +1,14 @@
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\bin\Debug\netcoreapp2.1\PremiumCalculator.deps.json
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\bin\Debug\netcoreapp2.1\PremiumCalculator.runtimeconfig.json
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\bin\Debug\netcoreapp2.1\PremiumCalculator.runtimeconfig.dev.json
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\bin\Debug\netcoreapp2.1\PremiumCalculator.dll
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\obj\Debug\netcoreapp2.1\PremiumCalculator.csproj.CoreCompileInputs.cache
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\obj\Debug\netcoreapp2.1\PremiumCalculator.RazorAssemblyInfo.cache
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\obj\Debug\netcoreapp2.1\PremiumCalculator.RazorAssemblyInfo.cs
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\obj\Debug\netcoreapp2.1\PremiumCalculator.AssemblyInfoInputs.cache
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\obj\Debug\netcoreapp2.1\PremiumCalculator.AssemblyInfo.cs
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\obj\Debug\netcoreapp2.1\PremiumCalculator.RazorTargetAssemblyInfo.cache
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\bin\Debug\netcoreapp2.1\PremiumCalculator.pdb
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\obj\Debug\netcoreapp2.1\PremiumCalculator.dll
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\obj\Debug\netcoreapp2.1\PremiumCalculator.pdb
+C:\Users\aperum\source\repos\PremiumCalculator\PremiumCalculator\obj\Debug\netcoreapp2.1\PremiumCalculator.csprojAssemblyReference.cache
