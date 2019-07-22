@@ -11,11 +11,11 @@ namespace PremiumCalculator.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OccupationController : ControllerBase
+    public class PremiumController : ControllerBase
     {
         private readonly PremiumDetailsContext _context;
 
-        public OccupationController(PremiumDetailsContext context)
+        public PremiumController(PremiumDetailsContext context)
         {
             _context = context;
         }
@@ -27,9 +27,9 @@ namespace PremiumCalculator.Controllers
             return _context.Occupations;
         }
 
-        // GET: api/Occupation/5
+        // GET: api/GetFactor/5
         [HttpGet("{Occid}")]
-        public async Task<IActionResult> CalcPremium([FromRoute] int OccId)
+        public async Task<IActionResult> GetFactor([FromRoute] int OccId)
         {
             if (!ModelState.IsValid)
             {
@@ -37,109 +37,15 @@ namespace PremiumCalculator.Controllers
             }
 
             var occupation = await _context.Occupations.FindAsync(OccId);
-            
-
-            if (occupation == null)
+            var factorForRating = await _context.RatingFactors.FindAsync(occupation.RatingId);
+            if (factorForRating == null)
             {
                 return NotFound();
             }
 
-            return Ok(occupation);
+            return Ok(factorForRating.Factor);
         }
 
-        // GET: api/Occupation/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetOccupation([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            var occupation = await _context.Occupations.FindAsync(id);
-
-            if (occupation == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(occupation);
-        }
-
-        // PUT: api/Occupation/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOccupation([FromRoute] int id, [FromBody] Occupation occupation)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != occupation.OccupationId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(occupation).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OccupationExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Occupation
-        [HttpPost]
-        public async Task<IActionResult> PostOccupation([FromBody] Occupation occupation)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Occupations.Add(occupation);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetOccupation", new { id = occupation.OccupationId }, occupation);
-        }
-
-        // DELETE: api/Occupation/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteOccupation([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var occupation = await _context.Occupations.FindAsync(id);
-            if (occupation == null)
-            {
-                return NotFound();
-            }
-
-            _context.Occupations.Remove(occupation);
-            await _context.SaveChangesAsync();
-
-            return Ok(occupation);
-        }
-
-        private bool OccupationExists(int id)
-        {
-            return _context.Occupations.Any(e => e.OccupationId == id);
-        }
     }
 }
