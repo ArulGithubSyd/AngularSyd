@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertsModule } from 'angular-alert-module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AlertsModule } from 'angular-alert-module';
     FormsModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
-    AlertsModule.forRoot()
+    AlertsModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

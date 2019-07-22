@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
-import { datepickerAnimation } from 'ngx-bootstrap/datepicker/datepicker-animations';
+import { GetFactor } from './api/Get-factor.service';
 
 
 
@@ -24,7 +24,8 @@ export class AppComponent implements OnInit {
     maxDate: Date;
     ageIsValid: boolean;
     birthAge: number;
-    
+    api: GetFactor;
+    occtest: number;
     constructor(private formBuilder: FormBuilder) { }
 
     // Form fields
@@ -101,8 +102,9 @@ export class AppComponent implements OnInit {
         this.ValidateDOB();
         if(!this.ageIsValid)
         {
-          alert("Given age:" + this.calcPremiumForm.get('age').value + " and age as of Date of birth:"+ this.birthAge + " do not match. Please correct");
-          return
+         alert("Given age:" + this.calcPremiumForm.get('age').value + " and age as of Date of birth:"+ this.birthAge + " do not match. Please correct");
+         //confirm(" Test ");
+         return
         }
 
         console.log(this.f);
@@ -137,13 +139,22 @@ export class AppComponent implements OnInit {
 
      CalculateDeathPremium()
     {
-
-      var factor = this.getFactorByOccupationId(this.calcPremiumForm.get('occupation').value);
+      var occId = this.calcPremiumForm.get('occupation').value;
+      
       var dsi = this.calcPremiumForm.get('dsi').value;
       var age = this.calcPremiumForm.get('age').value;
+      this.getFactorByOccupationId(occId);
+     
+      //this.api.getFactor(occId).subscribe((factor: any) => {
+       // if (factor) {
+     //     test = factor;
+     //});
       this.deathPremium = ((dsi * this.occFactor * age)/1000) * 12;    
       //this.deathPremium = this.deathPremium.toPrecision(3);
-      console.log(this.deathPremium);
+      
     }
+  
 }
+
+
 
